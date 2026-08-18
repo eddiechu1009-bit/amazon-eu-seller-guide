@@ -105,6 +105,10 @@ p{margin:8px 0}
 ul,ol{margin:8px 0 8px 0; padding-left:22px}
 li{margin:4px 0}
 small,.small{font-size:12.5px; color:var(--ink-3)}
+/* 淺底色區塊內的小字改用較深的灰，確保對比達 AA 4.5:1 */
+.note small,.note .small,.keypoint small,.keypoint .small,
+.checklist small,.checklist .small,.tool small,.tool .small,
+.result small,.result .small,.acc-body small,.acc-body .small{color:var(--ink-2)}
 .mono{font-family:Consolas,"Courier New",monospace; background:#F1F4F7; padding:1px 5px; border-radius:4px; font-size:12.5px}
 
 /* ---------- TOC ---------- */
@@ -294,9 +298,15 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
   .prog{order:9}
 }
 @media print{
-  .bar,.totop,.tool .opts{display:none}
-  .chapter{page-break-inside:avoid; border:1px solid #ccc}
-  body{background:#fff}
+  .bar,.totop,.tool .opts,.sidenav,.navtoggle,.sn-backdrop,.search,.prog{display:none !important}
+  body{background:#fff; padding-left:0 !important; font-size:12px}
+  .chapter{page-break-inside:avoid; border:1px solid #ccc; margin-bottom:10px}
+  .stage-band{break-after:avoid; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .hero{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .steps{break-inside:avoid}
+  details.acc>summary,details.more>summary{break-after:avoid}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:9px; color:#555; word-break:break-all}
+  a[href^="#"]::after{content:""}
 }
 </style>
 </head>
@@ -354,7 +364,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
 </div></header>
 
 <div class="bar"><div class="wrap"><div class="bar-row">
-  <div class="search"><input id="q" type="search" placeholder="搜尋章節：KYC、稅號、EPR、Pan-EU、GPSR…" autocomplete="off"></div>
+  <div class="search"><input id="q" type="search" aria-label="搜尋章節內容" placeholder="搜尋章節：KYC、稅號、EPR、Pan-EU、GPSR…" autocomplete="off"></div>
   <div class="seg"><b>👥 身分</b>
     <button class="chip on" data-who="all">全部</button>
     <button class="chip" data-who="new">🆕 新賣家</button>
@@ -463,7 +473,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     <h3>🆕 新賣家</h3>
     <div class="tag">第一次在亞馬遜上銷售</div>
     <ol>
-      <li><a href="#sec01">【01】入駐優惠</a> — 歐洲站可領 <b>3 份獨立禮包</b></li>
+      <li><a href="#sec01">【01】入駐優惠</a> — 英國站與歐洲四國站<b>各一份禮包</b></li>
       <li><a href="#sec02">【02】開通帳號 + KYC</a> — <span class="hi">歐洲最大關卡</span></li>
       <li><a href="#sec03">【03】成本預估</a> — 5 項固定 + 4 項一次性費用</li>
       <li><a href="#sec04">【04】稅務 VAT</a> — <span class="hi">先辦，要 2–4 個月</span></li>
@@ -652,7 +662,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <b>⚠️ 三個最容易錯過資格的地方：</b>
       <ul>
         <li><b>歐洲四國「整個板塊」只能領一次</b>：德、法、義、西合計算一份。已有德國站的賣家，<b>不能再靠開法國站多領一次</b>。</li>
-        <li><b>首個 ASIN 上線時間有門檻</b>：英國站與歐洲四國站需在 <b>2026/3/26 或之後</b>發布首個可購買 ASIN。在此之前上線的，適用舊版（返還機制）規則。</li>
+        <li><b>首個 ASIN 上線時間有門檻</b>：英國站與歐洲四國站需在 <b>2026/03/26 或之後</b>發布首個可購買 ASIN。在此之前上線的，適用舊版（返還機制）規則。</li>
         <li><b>品牌註冊 6 個月內完成</b>，且你必須被認定為該品牌的<b>第一位品牌所有者</b>，才能疊加佣金抵扣券。</li>
       </ul>
     </div>
@@ -671,7 +681,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     <details class="acc"><summary>廣告折扣券的階梯怎麼跑最划算？</summary><div class="acc-body">
       <p>需在首個可購買 ASIN 上線後 <b>90 天內</b>設定一個廣告活動，之後按 <b>30 天內累計廣告花費</b>分三檔發券：花 $50–200 得 $50、花 $200–1,000 得 $200、花 $1,000 以上得 $1,000。</p>
       <p>券在達標後 14 個工作日內發到廣告帳戶，<b>發放後 30 天內未使用會過期</b>——所以拿到券後要有對應的投放計畫，不要放到過期。</p>
-      <p class="small">⚠️ 新版廣告福利的適用時間：英國站與歐洲四國站需在 2025/8/20（太平洋時間）之後建立商品推廣廣告。</p>
+      <p class="small">⚠️ 新版廣告福利的適用時間：英國站與歐洲四國站需在 2025/08/20（太平洋時間）之後建立商品推廣廣告。</p>
     </div></details>
     </div>
 
@@ -845,7 +855,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     </table></div>
     <div class="note warn">
       <b>💚 亞馬遜向賣家收取的費用就是上面這些。</b>官方課程、客戶經理輔導、官方翻譯服務（見 <a href="#sec08">08</a>）皆<b>不另收費</b>。
-      <br>📌 <b>但費率會調整。</b>2026 年歐洲多個品類的費用有調降，並自 2025/12/15 起分階段生效（部分品類如家居用品於 2026/2/1 生效）。實際費率一律以後台費用頁與官方公告為準。
+      <br>📌 <b>但費率會調整。</b>2026 年歐洲多個品類的費用有調降，並自 2025/12/15 起分階段生效（部分品類如家居用品於 2026/02/01 生效）。實際費率一律以後台費用頁與官方公告為準。
     </div>
     <div class="links">
       <a href="https://sellercentral-europe.amazon.com/hz/fba/profitabilitycalculator/index" target="_blank" rel="noopener">🧮 FBA Revenue Calculator（歐洲）</a>
@@ -953,11 +963,11 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <p>⚠️ <b>最常見的中途放棄點：本土號填入 Seller Central 會被系統拒絕，但你必須先有它才能申請第二個號。</b>賣家看到拒絕訊息常誤判為「申請失敗」而整案放棄。<b>那個畫面是正常的。</b></p>
       <p>另一個容易白等一輪的<b>格式陷阱</b>：填本土號時<b>不要加國碼</b>——<span class="mono">N1234567F</span> ✓ ／ <span class="mono">ESN1234567F</span> ✗（會回 VIES Rejected，那是格式錯誤，需刪除重新上傳）。兩種拒絕訊息看起來很像，處理方式完全不同。</p>
       <div class="note warn">
-        <b>📅 時程與兩個硬性限制（會決定你的排程）：</b>
+        <b>📅 時程與硬性限制（會決定你的排程）：</b>
         <ul>
-          <li>本土稅號約 <b>4–8 週</b>；<b>歐盟稅號額外 3–6 個月</b>（AEAT 審核）。</li>
-          <li>📌 <b>歐盟稅號（ROI 登記）一年只能在 1、4、7、10 月的申報月提交申請</b>——錯過就等下一季，這是最容易白等三個月的地方。</li>
-          <li>📌 申請歐盟稅號需有<b>B2B 訂單或跨境交易證明</b>；表格為 Modelo 036，勾選欄位 <b>582</b>。</li>
+          <li>本土稅號約 <b>4–8 週</b>；<b>歐盟稅號額外 3–6 個月</b>（AEAT 審核）。<br><small>📌 法規給 AEAT 的期限是 <b>3 個月</b>，且逾期未答復<b>視為駁回</b>（非視為通過）——所以要主動追，不要以為沒消息就是在排隊。</small></li>
+          <li>📌 <b>沒有「一年只能某幾個月申請」的限制</b>（AEAT 官方頁未設申請期間）。ROI 登記隨時可送：表格 <b>Modelo 036</b>，勾選<b>欄位 582</b>（申請加入 ROI），並在<b>欄位 584</b> 填首次跨境交易的<b>預計日期</b>。</li>
+          <li>📌 實務上申請歐盟稅號常被要求提供<b>B2B 訂單或跨境交易證明</b>（這是稅局審核慣例，非表格欄位要求），先跟稅代確認手上有什麼證據。</li>
           <li>POA 須公證，通常最耗時，<b>建議最先啟動</b>。</li>
         </ul>
       </div>
@@ -967,7 +977,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     </div></details>
     <details class="acc"><summary>🇮🇹 義大利：€50,000 保證金（已在執行中，且須持續維持）</summary><div class="acc-body">
       <div class="note warn">
-        <b>📌 自 2025/4/10 起執行中：</b>非歐盟企業（含台灣、中國、美國等）申請／維持義大利 VAT 需<b>持續維持 €50,000 銀行保證金</b>。
+        <b>📌 自 2025/04/14 起執行中：</b>非歐盟／非 EEA 企業（含台灣、中國、美國等）<b>透過義大利稅務代表</b>申請或維持 <b>VIES 登記</b>，需<b>持續維持 €50,000 保證金</b>（每一位被代理的外國主體各 €50,000）。
         <b>未維持有效保證金的後果：VIES 登記會被取消，Pan-EU 計畫也會一併中止。</b>
       </div>
       <ul>
@@ -980,7 +990,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
         <b>✅ 替代方案很單純：不在義大利入倉。</b>這個門檻卡的是「能不能在義大利存貨」，<b>不是「能不能賣到義大利」</b>。
         用德國或法國庫存透過 EFN 跨境配送義大利客戶，先驗證需求；量體起來再評估 €50,000 的資金占用是否值得換取當地配送費率。
       </div>
-      <p class="small">來源：Agenzia delle Entrate Prot. No. 178713/2025／DPR 633/1972 Art. 35(7-quater)。具體金額與形式請與稅代確認。</p>
+      <p class="small">來源：Agenzia delle Entrate 局長令 Prot. No. 178713/2025（2025/04/14 發布，訂出保證金的操作規則）／DPR 633/1972 Art. 35(7-quater)。具體金額與形式請與稅代確認。</p>
     </div></details>
     <details class="acc"><summary>🇫🇷 法國：非歐盟企業需指定稅務代表</summary><div class="acc-body">
       <p>法國要求非歐盟企業指定 <b>Fiscal Representative</b>（稅務代表），處理時程約 <b>4–12 週</b>，比德國久。稅率 20%。</p>
@@ -1069,7 +1079,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <thead><tr><th style="width:110px">標記</th><th>適用範圍</th><th>要注意</th></tr></thead>
       <tbody>
         <tr><td><b>CE</b></td><td>歐盟 27 國</td><td>由製造商／品牌商自行宣告符合適用指令，並簽署<b>符合性聲明（DoC）</b>。部分品類需第三方公告機構介入。</td></tr>
-        <tr><td><b>UKCA</b><br><span class="badge" style="background:#EFFAF4;color:#0E7A4F;border-color:#A7DCC1">多數賣家不需要</span></td><td>英國（英格蘭、蘇格蘭、威爾斯）</td><td>✅ <b>2024 年英國法規修訂後，多數消費品類已「無限期」接受 CE 標記，UKCA 屬可選方案。</b><br><b>已有 EU CE 的賣家多數不需要另做 UKCA，不必重複付這筆錢。</b><br><small>· UKCA 標籤可貼在文件而非產品本身的寬限期：至 2027/12/31<br>· 醫療器材 CE 認可寬限期：至 2030/6/30<br>· 部分高風險品類（建築用品、鐵路設備等）有獨立規則<br>依據：The Product Safety and Metrology (Amendment) Regulations 2024</small></td></tr>
+        <tr><td><b>UKCA</b><br><span class="badge" style="background:#EFFAF4;color:#0E7A4F;border-color:#A7DCC1">多數賣家不需要</span></td><td>英國（英格蘭、蘇格蘭、威爾斯）</td><td>✅ <b>2024 年英國法規修訂後，多數消費品類「持續接受」CE 標記且未設終止日，UKCA 屬可選方案。</b><br><b>已有 EU CE 的賣家多數不需要另做 UKCA，不必重複付這筆錢。</b><br><small>· UKCA 標籤可貼在文件而非產品本身的寬限期：至 <b>2027/12/31 23:00</b>（自 EEA 進口者的進口商資訊亦可標在包裝或文件上，同一期限）<br>· <b>醫療器材有各自期限，不是一律 2030</b>：舊指令（MDD／AIMDD）CE 器材至 <b>2028/06/30</b> 或證書到期日（取較早）；EU MDR 器材與 IVD（IVDD／IVDR）至 <b>2030/06/30</b>。英國已宣布將就「無限期承認醫療器材 CE」進行諮詢。<br>· 下列品類的 UKCA 標示位置有獨立規則，不適用上述文件標示彈性：<b>建築產品、醫療器材、纜車、船舶設備、鐵路產品、可攜式壓力設備、無人機系統</b><br>依據：The Product Safety and Metrology (Amendment) Regulations 2024／GOV.UK「Using the UKCA marking」與「Regulating medical devices in the UK」</small></td></tr>
         <tr><td><b>符合性聲明 DoC</b></td><td>絕大多數受規範品類</td><td>必備文件。須包含：<b>製造商資訊、產品資訊（品牌／型號）、適用法規標準、簽署人姓名職位簽名日期</b>，並隨附與申請商品一致的產品照片。</td></tr>
       </tbody>
     </table></div>
@@ -1172,7 +1182,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     <details class="acc"><summary>🔌 賣電子電器／含電池商品：WEEE 與電池 EPR 是額外的兩項</summary><div class="acc-body">
       <ul>
         <li><b>WEEE（電子電器廢棄物指令 2012/19/EU）：</b>只要賣電子電器就必須在<b>各國分別註冊</b>（DE／FR／IT／ES／UK）。亞馬遜<b>已要求所有電子產品提供 WEEE 註冊號</b>。時程 2–6 週／國，約 US$110–550／年／國。</li>
-        <li><b>電池 EPR：</b>含電池產品需在各國註冊電池回收。📌 <b>亞馬遜自 2025/8/18 起已強制執行</b>；未提供號碼會被<b>自動加入代付（Pay on Behalf）扣費</b>。</li>
+        <li><b>電池 EPR：</b>含電池產品需在各國註冊電池回收。📌 <b>亞馬遜自 2025/08/18 起已強制執行</b>；未提供號碼會被<b>自動加入代付（Pay on Behalf）扣費</b>。</li>
         <li>⚠️ 德國的電池義務：若你賣的是「含電池的電子電器商品」，<b>電子電器與電池兩個分類都要註冊</b>。</li>
       </ul>
       <p class="small">💡 這也是為什麼一台藍牙擴音器在單一國家就要三組 EPR（包裝 + EEE + 電池）——它同時觸發三套回收體系。</p>
@@ -1183,20 +1193,20 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <thead><tr><th style="width:112px">時間</th><th>項目</th><th>適用對象與要做什麼</th></tr></thead>
       <tbody>
         <tr><td>已生效</td><td><b>GPSR</b></td><td><b>幾乎所有非食品消費品。</b>指定歐盟責任人並在 Listing 揭露；持續有下架執行。</td></tr>
-        <tr><td>已強制<br><small>2026/6/30 起</small></td><td><b>COO 原產國資訊</b></td><td><b>有跨境配送者（全球計畫／FBA 出口／遠端配送）。</b>SKU 層級填報，未填會被切斷跨境訂單。詳見 <a href="#sec09">09</a>。</td></tr>
-        <tr><td>已執行<br><small>2025/8/18 起</small></td><td><b>電池 EPR 強制執行</b></td><td><b>含電池商品。</b>未提供註冊號會被自動加入代付扣費。</td></tr>
-        <tr><td><b>📅 2026/08/12</b></td><td><b>PPWR 包裝法規全面適用</b><br><small>(EU) 2025/40</small></td><td><b>所有賣家（無規模豁免）。</b>三件事：<br>① 每一<b>種</b>包裝類型都要備 <b>EU Declaration of Conformity</b>（是每種包裝規格一份，不是每個 SKU 一份）<br>② 履行 Article 10 <b>包裝最小化</b>義務<br>③ 非歐盟企業須在每個「首次投放包裝」的成員國<b>書面委任 EPR 授權代表</b>，須在此日前到位<br><b>過渡期結束後無舊庫存售完寬限期。</b></td></tr>
+        <tr><td>已強制<br><small>2026/06/30 起</small></td><td><b>COO 原產國資訊</b></td><td><b>有跨境配送者（全球計畫／FBA 出口／遠端配送）。</b>SKU 層級填報，未填會被切斷跨境訂單。詳見 <a href="#sec09">09</a>。</td></tr>
+        <tr><td>已執行<br><small>2025/08/18 起</small></td><td><b>電池 EPR 強制執行</b></td><td><b>含電池商品。</b>未提供註冊號會被自動加入代付扣費。</td></tr>
+        <tr><td><b>📅 2026/08/12</b></td><td><b>PPWR 包裝法規全面適用</b><br><small>(EU) 2025/40</small></td><td><b>所有賣家（無規模豁免）。</b>此日<b>當天就要到位</b>的是三件事：<br>① 每一<b>種</b>包裝類型都要備 <b>EU Declaration of Conformity</b>（是每種包裝規格一份，不是每個 SKU 一份，見 Annex VII／VIII）<br>② <b>Article 10(2)</b>：不得使用「只為了讓商品看起來更大」的包裝（雙層壁、假底、多餘層次），以及不符 Annex IV 效能準則的包裝<br>③ 非歐盟企業須在每個「首次投放包裝」的成員國<b>書面委任 EPR 授權代表</b>（Art. 45(3)），須在此日前到位<br><b>過渡期結束後無舊庫存售完寬限期</b>（Art. 70 只保留少數 94/62/EC 條文，未給舊庫存緩衝）。<br><small>📌 重量／體積最小化（Art. 10(1)）的法定期限是 <b>2030/01/01</b>，不是 2026/08/12——別把兩者混在一起排程。</small></td></tr>
         <tr><td>📅 2026/08/18</td><td>電池<b>詳細資訊標籤</b>（Annex VI Part A）+ 容量標示</td><td><b>含電池商品。</b>檢查標籤內容。此日期綁實施細則 +18 個月，<b>可能順延</b>。</td></tr>
-        <tr><td>📅 2026/12/30<br><small>小微型 2027/6/30</small></td><td><b>EUDR 反森林砍伐法規</b><br><small>(EU) 2023/1115</small></td><td><b>含木材／紙／牛皮／可可／咖啡／棕櫚油／橡膠／大豆及其衍生品者。</b><br>⚠️ <b>紙製包裝（外箱、襯紙）也算衍生品</b>，木玩具、家具、紙文具、皮包皮鞋是高風險品類。<br>✅ <b>小型／微型企業（員工 &lt;50 且營收 &lt;€10M）到 2027/6/30 才適用</b>——多數台灣中小賣家屬此類，可在 2027 前完成準備。</td></tr>
-        <tr><td><b>📅 2027/02/18</b></td><td>電池 <b>QR Code</b> + <b>可拆換電池權利</b> + <b>數位電池護照</b></td><td><b>含電池商品。</b>此日期<b>固定、不順延</b>。「可拆換」涉及<b>產品設計</b>，現在就要進設計流程才趕得上。</td></tr>
-        <tr><td>2026/07/19<br><small>已生效</small></td><td>ESPR 未售服飾／鞋類<b>銷毀禁令</b></td><td>✅ <b>僅適用「大型企業」</b>：員工 &gt;250、營業額 &gt;€50M、資產總額 &gt;€25M 三項中至少滿足<b>兩項</b>。<b>中小賣家 2030/7/19 才納管。</b><br>📌 品項限服飾／服飾配件／鞋類，<b>不含</b>手提包、皮件、珠寶、手錶、太陽眼鏡。</td></tr>
+        <tr><td>📅 2026/12/30<br><small>小微型 2027/06/30</small></td><td><b>EUDR 反森林砍伐法規</b><br><small>(EU) 2023/1115</small></td><td><b>含木材／紙／牛皮／可可／咖啡／棕櫚油／橡膠／大豆及其衍生品者。</b><br>⚠️ <b>紙製包裝（外箱、襯紙）也算衍生品</b>，木玩具、家具、紙文具、皮包皮鞋是高風險品類。<br>✅ <b>小型／微型企業（員工 &lt;50 且營收 &lt;€10M）到 2027/06/30 才適用</b>——多數台灣中小賣家屬此類，可在 2027 前完成準備。<br>⚠️ <b>但有一個例外會打掉這個緩衝：</b>原本已在<b>歐盟木材法規（EUTR）</b>適用範圍內的小型／微型業者，仍是 <b>2026/12/30</b> 起適用。賣木製家具、木玩具、紙製品者請先確認自己是否落在此例外。</td></tr>
+        <tr><td><b>📅 2027/02/18</b></td><td>電池 <b>QR Code</b> + <b>可拆換電池權利</b>（+ 數位電池護照，<b>僅特定電池</b>）</td><td><b>含電池商品。</b>此日期<b>固定、不順延</b>。<br>· <b>QR Code：所有電池都要</b>（Art. 13(6)）<br>· <b>可拆換／可更換</b>（Art. 11）：涉及<b>產品設計</b>，現在就要進設計流程才趕得上<br>· ✅ <b>數位電池護照只適用 LMT（輕型交通工具）電池、容量 &gt;2 kWh 的工業電池與電動車電池</b>（Art. 77）——一般消費電子內的<b>便攜式電池不在此列</b>，多數台灣賣家不需要做護照，但 QR Code 與可拆換仍要做。</td></tr>
+        <tr><td>2026/07/19<br><small>已生效</small></td><td>ESPR 未售服飾／鞋類<b>銷毀禁令</b><br><small>(EU) 2024/1781 Art. 25</small></td><td>✅ <b>微型與小型企業不適用</b>（&lt;50 人且年營收或資產總額 ≤€10M，依 Commission Recommendation 2003/361/EC）——<b>多數台灣賣家屬此類</b>。<br>📌 <b>中型企業</b>（&lt;250 人、營收 ≤€50M 或資產 ≤€43M）自 <b>2030/07/19</b> 起納管；<b>大型企業自 2026/07/19 起</b>已受規範。<br>📌 品項為 Annex VII 明列的 HS 碼：<b>4203／61／62（服飾與服飾配件，含皮製）、6504／6505（帽類）、6401–6405（鞋類）</b>；<b>不含</b>手提包與行李箱（4202）、珠寶、手錶、太陽眼鏡。<br><small>⚠️ 若有證據顯示以小企業規避禁令，Commission 可用委任法案把範圍擴及微型／小型企業。</small></td></tr>
         <tr><td>2027–2030<br><small>分階段</small></td><td><b>DPP 數位產品護照</b>／包裝可回收性分級</td><td>紡織與電子優先。包裝可回收性 <b>2030 年起分級 A–E，僅 A–C 可上市</b>，等級也影響 EPR 費率。<br>賣紡織／服飾／鞋類／電子者建議現在開始盤點材質成分。</td></tr>
       </tbody>
     </table></div>
     <div class="note warn">
       <b>⚠️ 兩個容易被傳錯的細節，先講清楚：</b>
       <ul>
-        <li><b>「包裝空隙率上限 50%」不是 2026/8/12 生效</b>，那是 PPWR <b>Article 24，2030/1/1</b> 才適用。2026/8/12 生效的是 Article 10 的一般包裝最小化義務。（📌 填充材如氣泡袋、氣墊、碎紙、泡棉<b>依法算作空隙</b>，自發貨賣家要特別注意。）</li>
+        <li><b>「包裝空隙率上限 50%」不是 2026/08/12 生效。</b>那是 PPWR <b>Article 24(1)</b>：<b>2030/01/01</b>，或計算方法學實施細則（Commission 須於 2028/02/12 前發布）生效後 3 年，<b>取較晚者</b>。2026/08/12 當天生效的是 <b>Article 10(2)</b> 的過度包裝禁令與 DoC，不是重量體積最小化（Art. 10(1)，2030/01/01）。<br>另有一個中間期限常被忽略：<b>銷售包裝</b>的空隙須於 <b>2028/02/12</b> 前降到功能所需的最低限度（Art. 24(4)）。（📌 填充材如氣泡袋、氣墊、碎紙、泡棉<b>依法算作空隙</b>，自發貨賣家要特別注意。）</li>
         <li><b>電池法規不是新規。</b>它是 2023 年就通過的 (EU) 2023/1542 分階段上路——「今年突然要做很多事」的感覺，其實是多個階段的義務疊在同一時間點。把時程攤開看會輕鬆得多。</li>
       </ul>
     </div>
@@ -1212,7 +1222,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <ul>
         <li><b>EPR 註冊號可以用上游的嗎？</b>如果你不是生產者，可以向<b>上游供應商索取</b>適用的註冊號提供給亞馬遜。但若拿不到，你就必須自己註冊。台灣賣家多數屬於「必須自己註冊」的情況。</li>
         <li><b>自發貨（MFN）也要做 EPR。</b>不論 FBA 或 MFN，亞馬遜都必須確認銷售夥伴符合 EPR 要求。</li>
-        <li><b>一級與二級包裝的責任：</b>你要為一級（商品包裝）與二級（運輸外箱、填充材、膠帶、運輸標籤）包裝都負責。FBA 二級包裝在德國自 2022/7/1 起也由賣家負擔，亞馬遜會提供計算所需的包裝使用資料／報告。</li>
+        <li><b>一級與二級包裝的責任：</b>你要為一級（商品包裝）與二級（運輸外箱、填充材、膠帶、運輸標籤）包裝都負責。FBA 二級包裝在德國自 2022/07/01 起也由賣家負擔，亞馬遜會提供計算所需的包裝使用資料／報告。</li>
         <li><b>後台不接受你的 EPR 號時：</b>依序檢查 ① 確認是 EPR 註冊號而非其他編號 ② 有沒有輸入錯誤 ③ 號碼是否對應到你註冊的正確分類 ④ 與該機構確認號碼與分類已正確關聯。</li>
         <li><b>可向我索取：</b>生產者責任延伸（EPR）合規介紹手冊、歐盟授權代表合規介紹手冊 &amp; FAQ、GPSR 指南與 FAQ、賣家合規全品類與電池法規一頁式摘要、第三方服務商清單（含產品認證與檢驗）。</li>
       </ul>
@@ -1471,7 +1481,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     <h3>📌 三項「文件沒交就出不了貨」的申報義務</h3>
     <p class="small">這三項都不是產品認證，而是<b>進口與跨境的資料申報</b>。它們的共同特徵是：不做不會馬上被罰錢，但會<b>安靜地把你的銷售管道關掉</b>——所以很多賣家是「訂單突然沒了」才發現。</p>
 
-    <details class="acc"><summary>① COO 原產國資訊 — 未填會直接切斷跨境訂單（2026/6/30 起強制）</summary><div class="acc-body">
+    <details class="acc"><summary>① COO 原產國資訊 — 未填會直接切斷跨境訂單（2026/06/30 起強制）</summary><div class="acc-body">
       <div class="note danger">
         <b>這是「填了才能賣」的硬性欄位，不是文件備查。</b>商品若透過 FBA 尾程物流或自配送跨境送到歐盟／英國買家，必須在 Seller Central 提供原產國。
         <b>未填的既有商品會被限制跨境銷售</b>（「歐盟境外→境內」、「英國境外→境內」皆禁），新品則是選不到 COO 就<b>建不了 listing</b>。
@@ -1714,7 +1724,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
         <li><b>保險商資格：</b>須具備全球索賠處理能力，財務評級達 S&amp;P A- 或 AM Best A- 以上（當地同等評級亦可）。</li>
       </ul>
       <div class="note ok">
-        <b>🆕 兩項 2025/1/1 起的變更，舊資料多半還是錯的：</b>
+        <b>🆕 兩項 2025/01/01 起的變更，舊資料多半還是錯的：</b>
         <ul>
           <li><b>歐洲版已「取消」必須將 Amazon 列為附加被保險人的要求</b>——別再為此多付費用或改保單。</li>
           <li>改為：保單<b>取消、變更或不續約時，通知亞馬遜的義務落在賣家身上</b>（不再是保險公司）。</li>
@@ -1871,10 +1881,10 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     <div class="tw"><table>
       <thead><tr><th style="width:110px">類別</th><th>動態</th></tr></thead>
       <tbody>
-        <tr><td>費用</td><td><b>2026 年歐洲多品類費用調降</b>，自 2025/12/15 起分階段生效（部分品類如家居用品 2026/2/1 生效）。請到後台確認自己品類的實際新費率。</td></tr>
-        <tr><td>合規</td><td><b>PPWR 包裝法規 2026/08/12 全歐生效</b>；電池標籤 2026/08/18、電池 QR／數位護照 2027/02/18。見 <a href="#sec05">05</a> 時程表。</td></tr>
+        <tr><td>費用</td><td><b>2026 年歐洲多品類費用調降</b>，自 2025/12/15 起分階段生效（部分品類如家居用品 2026/02/01 生效）。請到後台確認自己品類的實際新費率。</td></tr>
+        <tr><td>合規</td><td><b>PPWR 包裝法規 2026/08/12 全歐生效</b>（當天到位的是 DoC、過度包裝禁令與 EPR 授權代表；最小化與空隙率是 2030）；電池標籤 2026/08/18、電池 QR Code 與可拆換 2027/02/18（數位護照僅 LMT／工業／電動車電池）。見 <a href="#sec05">05</a> 時程表。</td></tr>
         <tr><td>合規</td><td><b>GPSR</b> 持續執行下架；非歐盟賣家須指定歐盟責任人並在 Listing 揭露。</td></tr>
-        <tr><td>促銷</td><td>促銷費用政策曾於 2025/6/2 起調整（美、日、英、法、德、義、西站）。提報前確認當前費率。</td></tr>
+        <tr><td>促銷</td><td>促銷費用政策曾於 2025/06/02 起調整（美、日、英、法、德、義、西站）。提報前確認當前費率。</td></tr>
       </tbody>
     </table></div>
     <p class="small">⚠️ 以上為整理時點的資訊，法規時程可能因實施細則而順延或提前。<b>請以官方公告為準</b>，有變動我會另行通知。</p>
@@ -2098,12 +2108,12 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
 
   /* ---------- tool: compliance checklist ---------- */
   var RULES = {
-    pack:      { name:'有包裝／外箱',          items:['<b>EPR — 包裝類別</b>：幾乎沒有賣家能豁免。每個銷售國各別註冊。','<b>PPWR</b> 包裝法規 2026/08/12 全歐生效，各國仍須自行註冊'] },
+    pack:      { name:'有包裝／外箱',          items:['<b>EPR — 包裝類別</b>：幾乎沒有賣家能豁免。每個銷售國各別註冊。','<b>PPWR</b> 包裝法規 2026/08/12 全歐生效，各國仍須自行註冊','2026/08/12 當天要有的是：<b>每種包裝一份 EU DoC</b> + 不使用假底／雙層壁等過度包裝（Art. 10(2)）+ 各投放國的 <b>EPR 授權代表</b>；重量體積最小化（Art. 10(1)）與空隙率 50% 是 <b>2030/01/01</b>'] },
     eee:       { name:'電子電器',              items:['<b>CE</b> 標記 + 符合性聲明（DoC）。✅ 已有 CE 者<b>多數不需要另做 UKCA</b>','<b>EPR — 電氣和電子設備（EEE）</b> 類別註冊（德國為 stiftung ear）','<b>WEEE 註冊號</b>：各國分別註冊，亞馬遜已要求所有電子產品提供','注意當地<b>電壓與插頭規格</b>（歐陸 220–240V／英規三腳插頭）'] },
-    batt:      { name:'含電池',                items:['<b>EPR — 電池</b> 類別註冊 — 📌 亞馬遜自 <b>2025/8/18 起已強制執行</b>，未提供號碼會被自動加入代付扣費','<b>電池法規 (EU)2023/1542</b>：2026/08/18 詳細資訊標籤 + 容量標示（可能順延）；<b>2027/02/18 QR Code + 可拆換電池權利 + 數位電池護照（日期固定不順延）</b>','⚠️ 德國：賣「含電池的電子電器」須<b>電子電器與電池兩個分類都註冊</b>','鋰電池運輸屬<b>危險品</b>，頭程與 FBA 入倉均有額外要求，須先與物流商確認'] },
+    batt:      { name:'含電池',                items:['<b>EPR — 電池</b> 類別註冊 — 📌 亞馬遜自 <b>2025/08/18 起已強制執行</b>，未提供號碼會被自動加入代付扣費','<b>電池法規 (EU)2023/1542</b>：2026/08/18 詳細資訊標籤 + 容量標示（綁實施細則 +18 個月，可能順延）；<b>2027/02/18 QR Code（所有電池）+ 可拆換電池權利（日期固定不順延）</b>。✅ <b>數位電池護照只適用 LMT 電池／&gt;2 kWh 工業電池／電動車電池</b>，一般消費品內的便攜式電池不需要','⚠️ 德國：賣「含電池的電子電器」須<b>電子電器與電池兩個分類都註冊</b>','鋰電池運輸屬<b>危險品</b>，頭程與 FBA 入倉均有額外要求，須先與物流商確認'] },
     wireless:  { name:'無線功能',              items:['<b>RED 無線電設備指令</b>符合性評估（藍牙／WiFi 產品）','需在 DoC 中列明適用的無線電標準'] },
     toy:       { name:'兒童玩具',              items:['<b>玩具安全指令</b>符合性 + 測試報告','包裝須有<b>年齡限制標識</b>與警語','須標示製造商名稱地址，以及<b>歐盟進口商／責任人</b>資訊'] },
-    textile:   { name:'紡織品／服飾／鞋靴',    items:['<b>纖維成分標示</b>（各國語言要求）','🇫🇷 法國另需 <b>EPR — 紡織品</b> 類別註冊（德國不需要）','注意 <b>ESPR 未售服飾／鞋類銷毀禁令</b>（2026/07/19 起大企業先行）'] },
+    textile:   { name:'紡織品／服飾／鞋靴',    items:['<b>纖維成分標示</b>（各國語言要求）','🇫🇷 法國另需 <b>EPR — 紡織品</b> 類別註冊（德國不需要）','📌 <b>ESPR 未售服飾／鞋類銷毀禁令</b>已於 2026/07/19 對大型企業生效，但<b>微型與小型企業不適用</b>（&lt;50 人且營收或資產 ≤€10M），<b>中型企業 2030/07/19 才納管</b>——多數台灣賣家目前不在範圍內'] },
     furniture: { name:'傢俱',                  items:['🇫🇷 法國需 <b>EPR — 傢俱</b> 類別註冊','部分品類有防火與穩定性要求（尤其英國）'] },
     ppe:       { name:'個人防護／醫療相關',    items:['<b>PPE 法規</b>或<b>醫療器材法規（MDR）</b>，多數需<b>第三方公告機構</b>介入','此類商品在亞馬遜屬<b>需審核類目</b>，上架前須先取得銷售權限'] },
     food:      { name:'食品接觸材質／化妝品',  items:['<b>食品接觸材質（FCM）</b>符合性聲明，或<b>化妝品法規 (EC)1223/2009</b>','化妝品須完成 <b>CPNP 通報</b>並指定<b>責任人（RP）</b>','有效期商品有 FBA 剩餘架儲期要求，須先確認'] }
@@ -2126,7 +2136,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     var base = ['<b>用「合規性參考」工具</b>反查你的品類完整要求（商品／危險品／出口／進口四個面向）'];
     var hasEU = mks.some(function(m){ return m !== 'UK'; });
     if(hasEU) base.push('<b>GPSR：指定歐盟責任人（EU RP）</b>，並在 Listing 上揭露名稱與聯絡方式 — 非歐盟賣家必辦，缺件會被限制銷售');
-    if(mks.indexOf('UK') > -1) base.push('<b>英國：指定英國負責人（英代）</b> — 與歐盟 RP 是兩套、不能互相取代，技術文件須兩邊各自保管。✅ <b>但 UKCA 多數賣家不需要做</b>（CE 已被無限期接受）');
+    if(mks.indexOf('UK') > -1) base.push('<b>英國：指定英國負責人（英代）</b> — 與歐盟 RP 是兩套、不能互相取代，技術文件須兩邊各自保管。✅ <b>但 UKCA 多數賣家不需要做</b>（多數消費品類的 CE 已被持續接受、未設終止日；醫療器材另有期限）');
     base.push('準備<b>符合性聲明（DoC）</b>：製造商資訊、產品資訊（品牌／型號）、適用法規、簽署人姓名職位簽名日期 + 產品照片');
     base.push('<b>COO 原產國資訊</b>：有跨境配送者必填，<b>SKU 層級、每個站點各填一次</b>，未填會被切斷跨境訂單');
     base.push('📌 <b>商業責任保險</b>：月銷售額<b>連續三個月</b>超門檻（DE／FR／IT／ES 約 €5,000、UK 約 £4,000）才觸發 — <b>開站初期還不需要</b>，但要知道它存在');
@@ -2223,6 +2233,19 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
   backdrop.addEventListener('click', closeNav);
   snLinks.forEach(function(a){
     a.addEventListener('click', function(){ if(window.innerWidth < 1200) closeNav(); });
+  });
+
+  /* ---------- print: 展開所有摺疊區，避免列印時內容消失 ---------- */
+  var reopened = [];
+  window.addEventListener('beforeprint', function(){
+    reopened = [];
+    document.querySelectorAll('details:not([open])').forEach(function(d){
+      d.open = true; reopened.push(d);
+    });
+  });
+  window.addEventListener('afterprint', function(){
+    reopened.forEach(function(d){ d.open = false; });
+    reopened = [];
   });
 
   /* ---------- to top ---------- */
