@@ -933,6 +933,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <label><input type="checkbox"><span>已決定要在哪些國家擺放庫存（決定要辦哪幾國稅號）</span></label>
       <label><input type="checkbox"><span>已媒合稅代服務商並啟動申請（含 EORI）</span></label>
       <label><input type="checkbox"><span>已了解 OSS 單一申報適用範圍</span></label>
+      <label><input type="checkbox"><span>已與稅代確認 OSS 要註冊在哪一國（＝貨物起運國，選定後綁約三個年度）</span></label>
       <label><input type="checkbox"><span>取得稅號後已上傳後台並顯示「已驗證」</span></label>
       <label><input type="checkbox"><span>已確認申報週期與稅代的交件節奏</span></label>
     </div>
@@ -953,6 +954,19 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
         <tr><td><b>IOSS</b></td><td>針對從歐盟境外直送、單筆價值 €150 以下的 B2C 進口簡化申報機制。若你走境外直發（非 FBA）模式會用到。</td></tr>
       </tbody>
     </table></div>
+
+    <div class="note">
+      <b>📌 台灣公司要在「哪一國」註冊 OSS？這件事綁三年，值得一開始就選對</b>
+      <p>台灣公司在歐盟沒有設立據點，仍然<b>可以使用 Union OSS 申報歐盟境內跨境 B2C 的「貨物」銷售</b>（服務不行——B2C 服務要用 Union OSS 需在歐盟設有據點）。但註冊國不是你自由挑：</p>
+      <ul>
+        <li><b>註冊國（Member State of Identification）＝ 貨物「起運國」</b>。你的 FBA 庫存放德國、從德國發貨，OSS 就在德國註冊。</li>
+        <li><b>在多國都有庫存時，可以任選其中一個起運國</b>——但<b>選定後會被綁住「當年度 + 之後兩個完整年度」</b>（約三個年度），不能想換就換。</li>
+        <li>要換註冊國的前提是<b>你在至少兩個成員國有庫存</b>；變更於<b>當季季末生效</b>，且綁定期會重新起算。實務上是「舊國退出 + 新國重新註冊」。</li>
+        <li>📌 非歐盟企業註冊 OSS 前，會由<b>註冊國先核發一組 VAT 號</b>給你（與你的當地庫存稅號是不同用途，別搞混）。</li>
+      </ul>
+      <p><b>行動含意：</b>如果你的長期主力倉會落在德國，就別為了「先開賣」把 OSS 註冊在一個過渡性的起運國——那會把你綁在該國三個年度的申報節奏與稅代費用上。決定第一個入倉國時，順手把這件事一起問稅代。</p>
+      <p class="small">依據：歐盟執委會 VAT One Stop Shop 官方說明（Union scheme 註冊規則）。實際登記程序與文件請以稅代與該國稅局要求為準。</p>
+    </div>
 
     <h3>🇪🇸🇮🇹 南歐兩個實務門檻（很多賣家在這裡放棄）</h3>
     <details class="acc"><summary>🇪🇸 西班牙：兩階段發號，第一個號填進後台會被拒絕——這是正常的</summary><div class="acc-body">
@@ -1393,6 +1407,8 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <label><input type="checkbox"><span>已決定物流方案（EFN／Pan-EU／MCI）</span></label>
       <label><input type="checkbox"><span>已媒合頭程物流服務商並確認清關方式</span></label>
       <label><input type="checkbox"><span>已備好清關所需的合規文件</span></label>
+      <label><input type="checkbox"><span>（含電池／噴霧／易燃品）已通過危險品審核，並備好 SDS 或豁免聲明、UN38.3 報告</span></label>
+      <label><input type="checkbox"><span>（走自發貨 FBM）已安排當地語言客服與退貨路徑</span></label>
       <label><input type="checkbox"><span>已完成包裝與貼標（FNSKU）</span></label>
       <label><input type="checkbox"><span>已在後台建立貨件並完成頭程發運</span></label>
       <label><input type="checkbox"><span>（英國+歐盟都賣）已理解兩地是獨立庫存池，需分別入倉</span></label>
@@ -1478,6 +1494,25 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <b>⚠️ 清關方式要和服務商講清楚。</b>頭程進口的稅費由誰承擔（DDP／DDU）、EORI 用誰的、進口 VAT 如何處理與抵扣，這些會直接影響你的到岸成本與現金流。這不是「交給貨代就好」的環節，你要看得懂報價包含什麼。
     </div>
 
+    <details class="acc"><summary>🔋 危險品審核 — 含電池商品在「建貨件之前」就會被卡</summary><div class="acc-body">
+      <p>這是含電池賣家最常在時程上失算的一關：<b>它不在合規章節、也不在申報義務裡，而是在你要建 FBA 貨件的時候擋你</b>。商品被判定為危險品（Dangerous Goods／Hazmat）時，必須先通過危險品審核才能入倉。</p>
+      <div class="note">
+        <b>哪些商品會被判為危險品（比多數人以為的廣）：</b>
+        <ul>
+          <li><b>含鋰電池</b>的一切商品（含內建電池的電子產品、藍牙裝置、電動工具、含電池的玩具）</li>
+          <li>噴霧與加壓容器、易燃液體（含酒精成分的清潔劑、香水）、易燃固體</li>
+          <li>強磁性商品、腐蝕性或刺激性化學品、部分保養與美妝品</li>
+        </ul>
+      </div>
+      <ul>
+        <li><b>你要交的文件是這兩種之一：</b>安全資料表（<b>SDS／MSDS</b>），或<b>豁免聲明（Exemption Sheet）</b>——商品不含危險成分時用這份聲明。文件要與 ASIN／SKU 對得上，且內容要看得出電池的化學類型、瓦時數（Wh）、數量與包裝方式。</li>
+        <li><b>頭程（尤其空運）另外一套要求：</b>鋰電池需要 <b>UN38.3 測試報告</b>與 MSDS，並依 IATA 鋰電池包裝規範分類（<b>PI 965–970</b>：單獨電池／與設備同包裝／裝於設備內）。<b>單獨出貨的鋰離子電池（UN3480／PI 965）不得走客機、只能走貨機，且電量須維持在 30% 以下</b>——這會直接改變你的運費與可用航線。</li>
+        <li><b>實務順序：</b>① 先向供應商索取 UN38.3 + MSDS（工廠端多半已有，這是「待確認」不是「待支出」）→ ② 後台送危險品審核 → ③ 審核通過才建貨件、才排頭程。<b>改了電池容量、改了包裝或換工廠，要重新送審。</b></li>
+        <li>⚠️ <b>沒送審或審核未通過的後果：</b>建不了貨件；已入倉的可能被封存或要求移除，海外倉端處理成本很高。<b>旺季前才發現，等於整批備貨延誤。</b></li>
+      </ul>
+      <p class="small">危險品的判定範圍、所需文件與審核時效請以<b>賣家後台的危險品識別／審核頁面</b>與各站點 FBA 危險品政策為準；空運規則以當年度 IATA 危險品規則與貨代確認為準。</p>
+    </div></details>
+
     <h3>📌 三項「文件沒交就出不了貨」的申報義務</h3>
     <p class="small">這三項都不是產品認證，而是<b>進口與跨境的資料申報</b>。它們的共同特徵是：不做不會馬上被罰錢，但會<b>安靜地把你的銷售管道關掉</b>——所以很多賣家是「訂單突然沒了」才發現。</p>
 
@@ -1544,6 +1579,18 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       </ul>
     </div></details>
     <p class="small">📌 以上三項的細部規則與畫面，以 Seller Central 實際顯示內容為準。</p>
+
+    <h3>📮 走自發貨（FBM）的話，歐洲有三件事會變成你自己的工作</h3>
+    <p class="small">很多賣家用美／日站的經驗評估 FBM，低估的不是配送成本，而是這三項「必須用當地語言、必須在當地落地」的營運義務。</p>
+    <div class="tw"><table>
+      <thead><tr><th style="width:150px">項目</th><th>你要自己做到什麼</th></tr></thead>
+      <tbody>
+        <tr><td><b>🗣 當地語言客服</b></td><td>買家用德文／法文／義文／西文來訊，就要用<b>同一語言</b>回覆，且回覆時效有要求（實務以 <b>24 小時內</b>為基準）。<b>不能只用英文應付歐陸四站</b>——這是 FBM 最常被低估的固定人力成本，用機器翻譯也要有人看得懂對方在客訴什麼。</td></tr>
+        <tr><td><b>📦 退貨路徑</b></td><td>歐洲買家預期「本地退貨」。三條路各有成本：① 當地退貨地址（自有據點或海外倉／退貨服務商）② 提供<b>預付國際退貨標籤</b> ③ 不要求退回、直接退款（低單價商品常這樣算更划算）。<b>沒有一條是「請買家自費寄回台灣」</b>，那在歐洲實務上等於放棄這筆訂單的評價與帳號健康。</td></tr>
+        <tr><td><b>⚖️ 法定 14 天無理由退貨</b></td><td>歐盟法律給買家的權利，不是平台政策；FBM 要自己履行（條文細節與退款時限見 <a href="#sec12">12</a>）。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">📌 客服語言與回覆時效的具體條款以<b>各站點賣家後台的服務政策</b>為準；FBA 賣家的客服與退貨由亞馬遜依政策處理，但退貨造成的成本仍然是你的。</p>
 
     <details class="more"><summary>💡 其他資訊</summary><div class="acc-body">
       <ul>
@@ -1669,7 +1716,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
     </div>
   </div>
   <div class="ch-body">
-    <div class="keypoint"><b>📌 本章重點：</b>上架後的<b>黃金 90 天</b>是關鍵期。用 Vine 與請求評論累積初期評論、用廣告數據優化 Listing、用促銷檔期放大聲量，三件事並行。</div>
+    <div class="keypoint"><b>📌 本章重點：</b>上架後的<b>黃金 90 天</b>是關鍵期。用 Vine 與請求評論累積初期評論、用廣告數據優化 Listing、用促銷檔期放大聲量，三件事並行。<br>量起來之後有三件事會找上你：<b>帳號健康</b>（歐洲聯合帳戶共用，一站出事會波及其他站）、<b>14 天法定無理由退貨</b>的成本，以及<b>商業責任保險</b>的投保門檻。</div>
 
     <h3>第 1–30 天：建立基礎</h3>
     <div class="checklist" data-cl="12a">
@@ -1696,7 +1743,50 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <label><input type="checkbox"><span>已做競品分析（關鍵字、定價、評論、廣告位）</span></label>
       <label><input type="checkbox"><span>已評估是否加開站點／轉 Pan-EU 降低配送成本</span></label>
       <label><input type="checkbox"><span>已檢視退貨原因並改善（歐洲退貨率較高）</span></label>
+      <label><input type="checkbox"><span>已開始定期看帳號健康（Account Health）各項指標</span></label>
     </div>
+
+    <h3>🩺 帳號健康（Account Health）— 量起來之後，這是最容易「無預警」限制你銷售的東西</h3>
+    <p class="small">前 90 天單量小，指標分母也小，<b>一兩筆客訴就可能把比率推過門檻</b>。歐洲買家對配送時效與商品描述落差的容忍度不高，加上退貨率本來就較高，這條在歐洲比美／日更值得早看。</p>
+    <div class="tw"><table>
+      <thead><tr><th style="width:190px">指標</th><th style="width:110px">常見目標值</th><th>意義與常見踩雷點</th></tr></thead>
+      <tbody>
+        <tr><td><b>訂單缺陷率（ODR）</b></td><td><b>&lt; 1%</b></td><td>負評、A-to-z 索賠、信用卡拒付的合計比率。<b>這是最直接會導致銷售權被移除的指標。</b>FBA 訂單的物流問題多數不計入你的 ODR，但商品本身描述不符會計入。</td></tr>
+        <tr><td><b>取消率（出貨前取消）</b></td><td><b>&lt; 2.5%</b></td><td>僅適用<b>自發貨</b>。斷貨後才取消訂單是最常見原因——寧可先關閉 listing，也不要接了單再取消。</td></tr>
+        <tr><td><b>遲發率</b></td><td><b>&lt; 4%</b></td><td>僅適用自發貨。跨國自發貨很容易踩，尤其歐洲各國國定假日不同步、貨代收件日與你以為的不一樣。</td></tr>
+        <tr><td><b>有效追蹤率</b></td><td><b>&gt; 95%</b></td><td>僅適用自發貨。追蹤號要是<b>該站點承認的承運商</b>才算有效，用了對方系統查不到的號碼等於沒填。</td></tr>
+        <tr><td><b>政策違規</b></td><td><b>0</b></td><td>侵權投訴、商品安全與合規（歐洲最常見：缺歐盟責任人、缺 EPR、缺測試報告）、評論操縱。<b>歐洲的下架多從這一欄開始</b>，見 <a href="#sec05">05</a>。</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>怎麼看：</b>後台【績效】→【帳號健康】。它會給一個<b>帳號健康評分（AHR）</b>與各項指標，並在接近門檻時提示。<b>指標是「滾動期間」計算的</b>，所以問題會延後反映、也會延後修復——不要等到收到限制信才處理。</li>
+      <li><b>歐洲的特別提醒：</b>帳號健康是<b>整個歐洲聯合帳戶共用</b>的，一個站點出問題可能影響你在其他站點的銷售權限。這與「稅務與合規要各國分開」剛好相反，別搞混。</li>
+      <li>📌 <b>收到績效或政策通知信要當天處理</b>，並保留申訴所需的憑證（供應商發票、測試報告、DoC、物流簽收）。卡住時把通知截圖給客戶經理，我可以協助判讀與內部跟進。</li>
+    </ul>
+    <p class="small">指標名稱、門檻與計算期間可能調整，且部分指標僅適用自發貨——請以<b>後台帳號健康頁當前顯示的目標值</b>為準。</p>
+
+    <h3>🔄 歐洲的退貨：14 天無理由退貨是<u>法律</u>權利，不是平台政策</h3>
+    <p class="small">這是美／日站賣家最容易誤判的一條。你可以調整平台上的退貨政策細節，但<b>撤回權來自歐盟消費者權利指令（2011/83/EU），不能用政策排除</b>。</p>
+    <div class="tw"><table>
+      <thead><tr><th style="width:170px">規則</th><th>內容（條文對應）</th></tr></thead>
+      <tbody>
+        <tr><td><b>14 天無理由撤回</b></td><td>遠距契約的買家有 <b>14 天</b>可以無理由撤回，<b>不需說明原因</b>。期間自<b>買家收到商品之日</b>起算（Art. 9）。</td></tr>
+        <tr><td><b>沒告知就變 12 個月</b></td><td>⚠️ 若你<b>未事先告知買家有撤回權</b>，撤回期會延長到<b>初始期滿後 12 個月</b>（Art. 10）。這是最貴的一個疏漏。</td></tr>
+        <tr><td><b>退款時限與範圍</b></td><td>買家通知撤回後，你要在 <b>14 天內退還全部款項，包含原始的標準運費</b>（買家自選升級配送的差額不必退）。可以<b>等收到退貨、或買家提出寄回證明</b>後才退款（Art. 13）。</td></tr>
+        <tr><td><b>退貨運費誰付</b></td><td>買家須在通知後 14 天內寄回。<b>退貨直接運費由買家負擔——但前提是你事先告知過</b>；沒告知就變成你吸收（Art. 14）。</td></tr>
+        <tr><td><b>拆封使用的折損</b></td><td>買家只需為「超出檢查商品性質與功能所必要」的使用造成的價值減損負責；<b>若你沒告知撤回權，連這個都不能向買家請求</b>（Art. 14(2)）。</td></tr>
+        <tr><td><b>不適用的情況</b></td><td>客製化／個人化商品、易腐商品、<b>因衛生或健康理由密封而已拆封</b>的商品、密封影音或軟體已拆封、與其他物品不可分離混合者等（Art. 16）。<b>賣個人衛生類商品的賣家要特別確認自己是否落在此例外。</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <b>💰 財務上的三個含意（做定價與促銷 ROI 時要一起算）：</b>
+      <ul>
+        <li>退回品未必能再賣：拆封後轉為二手或報廢，服飾與電子尤其明顯。</li>
+        <li><b>原始出貨運費你要退給買家</b>，等於一筆退貨至少吃掉「去程運費 + 處理成本 + 可能的商品折損」。</li>
+        <li>FBA 賣家不必自己處理流程，但成本仍然計在你身上；FBM 賣家還要加上退貨路徑的建置成本（見 <a href="#sec09">09</a>）。</li>
+      </ul>
+    </div>
+    <p class="small">依據：Directive 2011/83/EU（消費者權利指令）Art. 9、10、13、14、16。各成員國轉換的細節可能略有差異，且平台政策可能提供比法定更寬的條件（例如更長的退貨窗口）——實際以站點退貨政策與您的法律顧問確認為準。</p>
 
     <h3>📌 賣得好之後才會觸發的一件事：商業責任保險</h3>
     <div class="note warn">
@@ -1817,6 +1907,18 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
       <p><b>要。</b>代繳解決的是「錢」，不解決「註冊義務」，而且代繳的錢最後仍會向你收取。<b>德國</b>若無有效註冊號會直接暫停你在 EPR 類別下的商品；<b>法國</b>會代繳並向你收費，直到你提供有效 UIN。</p>
       <p>另外請把兩件事分清楚：<b>產品標籤合規</b>（產品上要標什麼）與<b>平台上架資格</b>（EPR 註冊號）是不同的義務，做完一件不代表另一件也完成。</p>
     </div></details>
+    <details class="acc"><summary>歐洲買家可以「無理由」退貨嗎？我可以不接受嗎？</summary><div class="acc-body">
+      <p><b>可以退，而且你不能拒絕。</b>歐盟消費者權利指令給遠距契約的買家 <b>14 天無理由撤回權</b>（自收到商品起算），這是<b>法律權利</b>，不是亞馬遜的政策，所以不能用自訂退貨政策排除。</p>
+      <p>⚠️ 最貴的疏漏是<b>沒有事先告知買家有這個權利</b>——那麼撤回期會從 14 天延長到<b>初始期滿後 12 個月</b>，而且買家連拆封使用造成的價值減損都不必負責。細節（退款時限、運費誰付、哪些商品例外）見 <a href="#sec12">12</a>。</p>
+    </div></details>
+    <details class="acc"><summary>我的商品含鋰電池，入倉前要多做什麼？</summary><div class="acc-body">
+      <p>兩套要求要分開處理：<b>① 亞馬遜端的危險品審核</b>（要交 SDS／MSDS 或豁免聲明，沒過就建不了 FBA 貨件）；<b>② 頭程運輸端</b>（鋰電池需 UN38.3 測試報告與 MSDS，空運另有 IATA 包裝分類與航線限制）。</p>
+      <p>實務上先向<b>供應商索取現有的 UN38.3 與 MSDS</b>（工廠端多半已經有），再送後台審核，通過後才排頭程。步驟與常見誤區見 <a href="#sec09">09</a>；電池的 EPR 與標籤義務是另一回事，見 <a href="#sec05">05</a>。</p>
+    </div></details>
+    <details class="acc"><summary>帳號健康（Account Health）在歐洲有什麼不一樣？</summary><div class="acc-body">
+      <p><b>最大的不同是：帳號健康是整個歐洲聯合帳戶共用的</b>，一個站點出問題可能影響你在其他歐洲站點的銷售權限——這與「稅務與合規要各國分開」剛好相反。</p>
+      <p>另外歐洲的違規多從<b>商品安全與合規</b>那一欄開始（缺歐盟責任人、缺 EPR、缺測試報告），不是從物流指標開始。各項指標與門檻見 <a href="#sec12">12</a>。</p>
+    </div></details>
     <details class="acc"><summary>英國站和歐盟站可以共用庫存嗎？</summary><div class="acc-body">
       <p><b>不能自動調撥。</b>脫歐後 UK FBA 與 EU FBA 是兩個獨立庫存池。要嘛分別入倉（兩套頭程與清關），要嘛用遠程配送從一邊服務另一邊（省頭程但配送費較高）。</p>
       <p>合規上也是兩套：UKCA vs CE、英國 EPR vs 歐盟 EPR、英國負責人 vs 歐盟責任人。</p>
@@ -1927,7 +2029,13 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
 
   /* ---------- progress (localStorage) ---------- */
   var boxes = Array.prototype.slice.call(document.querySelectorAll('.checklist input[type=checkbox]'));
-  boxes.forEach(function(b,i){ b.dataset.key = (b.closest('.checklist').dataset.cl||'x') + '-' + i; });
+  /* 用「章節 + 項目文字的雜湊」當 key，而不是全域序號——否則之後在任何清單中間新增一項，
+     後面所有項目的已勾選進度都會整批位移到錯誤的項目上。 */
+  function hkey(s){ var h = 5381, i; for(i = 0; i < s.length; i++){ h = ((h << 5) + h + s.charCodeAt(i)) | 0; } return (h >>> 0).toString(36); }
+  boxes.forEach(function(b){
+    var cl = b.closest('.checklist'), t = ((b.parentNode && b.parentNode.textContent) || '').replace(/\s+/g, ' ').trim();
+    b.dataset.key = (cl && cl.dataset.cl || 'x') + '-' + hkey(t);
+  });
 
   function load(){
     try{ return JSON.parse(localStorage.getItem(STORE)) || {}; }catch(e){ return {}; }
