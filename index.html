@@ -308,7 +308,11 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:9px; color:#555; word-break:break-all}
   a[href^="#"]::after{content:""}
 }
+.hero .lang{float:right;display:inline-block;margin:0 0 6px 12px;padding:4px 12px;border:1px solid rgba(255,255,255,.55);border-radius:999px;color:#fff;font-size:13px;font-weight:600;text-decoration:none}
+.hero .lang:hover{background:rgba(255,255,255,.15)}
+@media print{.hero .lang{display:none}}
 </style>
+<link rel="alternate" hreflang="en" href="en/">
 </head>
 <body>
 
@@ -351,6 +355,7 @@ mark{background:#FFF1A8; color:inherit; padding:0 1px}
 <button class="navtoggle" id="navToggle" title="章節導覽" aria-label="開啟章節導覽">☰</button>
 
 <header class="hero"><div class="wrap">
+  <a class="lang" href="en/" hreflang="en" lang="en">🌐 English</a>
   <h1>亞馬遜歐洲站 — 經營指導手冊</h1>
   <div class="sub">從 KYC 到 Pan-EU：台灣賣家開站歐洲的完整路徑圖</div>
   <div class="mk">
